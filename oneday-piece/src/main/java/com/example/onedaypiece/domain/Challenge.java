@@ -10,27 +10,27 @@ import java.time.LocalDateTime;
 public class Challenge {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer challengeId;
+
+    @Column(length = 100)
+    private String challengeTitle;
 
     @Column
-    private String title;
-
-    @Column(columnDefinition="TEXT")
-    private String content;
+    private String challengeCategory;
 
     @Column
-    private String catagoryName;
-
-    @Column
-    private LocalDateTime startDate;
-
-    @Column
-    private LocalDateTime endDate;
-
-    @Column
-    private String imgUrl;
+    private String challengeImg;
 
     @Column(length=200)
     private String challengeHoliday;
+
+    @Column
+    private LocalDateTime challengeStart;
+
+    @Column
+    private LocalDateTime challengeEnd;
+
+    @Column(columnDefinition="TEXT")
+    private String challengeContent;
 
 }

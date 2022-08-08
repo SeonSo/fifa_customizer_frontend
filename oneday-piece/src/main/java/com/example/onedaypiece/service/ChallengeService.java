@@ -5,6 +5,7 @@ import com.example.onedaypiece.domain.Challenge;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @AllArgsConstructor
@@ -16,10 +17,10 @@ public class ChallengeService {
         return challengeRepository.findAll();
     }
 
-    public void createChallenge(String category_name,String content) {
+    @Transactional
+    public void postChallenge() {
+
         Challenge challenge = new Challenge();
-        challenge.setCatagoryName(category_name);
-        challenge.setContent(content);
         this.challengeRepository.save(challenge);
     }
 }

@@ -22,10 +22,10 @@ public class ChallengeController {
 
     @PostMapping("/create")
     @ResponseBody
-    public String createChallenge(@RequestBody Challenge challenge){
+    public String postChallenge(@RequestBody Challenge challenge){
         System.out.println("challenge");
         System.out.println(challenge);
-        this.challengeService.createChallenge(challenge.getCatagoryName(),challenge.getContent() );
+        this.challengeService.postChallenge();
         return "생성됨";
     }
 }
