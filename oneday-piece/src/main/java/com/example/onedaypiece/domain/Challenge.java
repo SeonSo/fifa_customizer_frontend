@@ -30,6 +30,9 @@ public class Challenge {
     @Column
     private LocalDateTime challengeEnd;
 
+    @Column
+    private String challengeAuthority;
+
     @Column(columnDefinition="TEXT")
     private String challengeContent;
 

@@ -25,7 +25,9 @@ public class ChallengeController {
     public String postChallenge(@RequestBody Challenge challenge){
         System.out.println("challenge");
         System.out.println(challenge);
-        this.challengeService.postChallenge();
+        this.challengeService.postChallenge(challenge.getChallengeTitle(), challenge.getChallengeCategory(),
+                challenge.getChallengeContent(), challenge.getChallengeHoliday(), challenge.getChallengeStart(), challenge.getChallengeEnd(),
+                challenge.getChallengeAuthority());
         return "생성됨";
     }
 }

@@ -5,7 +5,7 @@ import com.example.onedaypiece.domain.Challenge;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @AllArgsConstructor
@@ -17,10 +17,18 @@ public class ChallengeService {
         return challengeRepository.findAll();
     }
 
-    @Transactional
-    public void postChallenge() {
-
+    public void postChallenge(String challengeTitle, String challengeCategory,
+                              String challengeImg, String challengeHoliday,
+                              LocalDateTime challengeStart, LocalDateTime challengeEnd,
+                              String challengeAuthority) {
         Challenge challenge = new Challenge();
+        challenge.setChallengeTitle(challengeTitle);
+        challenge.setChallengeCategory(challengeCategory);
+        challenge.setChallengeImg(challengeImg);
+        challenge.setChallengeHoliday(challengeHoliday);
+        challenge.setChallengeStart(challengeStart);
+        challenge.setChallengeEnd(challengeEnd);
+        challenge.setChallengeAuthority(challengeAuthority);
         this.challengeRepository.save(challenge);
     }
 }
