@@ -1,9 +1,10 @@
 package com.example.onedaypiece.domain;
 
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 @Data
@@ -25,10 +26,12 @@ public class Challenge {
     private String challengeHoliday;
 
     @Column
-    private LocalDateTime challengeStart;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate challengeStart;
 
     @Column
-    private LocalDateTime challengeEnd;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate challengeEnd;
 
     @Column
     private String challengeAuthority;

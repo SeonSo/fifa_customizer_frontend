@@ -5,7 +5,7 @@ import com.example.onedaypiece.domain.Challenge;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 @AllArgsConstructor
@@ -19,7 +19,7 @@ public class ChallengeService {
 
     public void postChallenge(String challengeTitle, String challengeCategory,
                               String challengeImg, String challengeHoliday,
-                              LocalDateTime challengeStart, LocalDateTime challengeEnd,
+                              LocalDate challengeStart, LocalDate challengeEnd,
                               String challengeAuthority) {
         Challenge challenge = new Challenge();
         challenge.setChallengeTitle(challengeTitle);
