@@ -1,11 +1,10 @@
 package com.example.onedaypiece.challenge.controller;
 
-import com.example.onedaypiece.domain.Challenge;
-import com.example.onedaypiece.service.ChallengeService;
+import com.example.onedaypiece.challenge.domain.challenge.Challenge;
+import com.example.onedaypiece.challenge.service.ChallengeService;
 import lombok.AllArgsConstructor;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/challenge")
@@ -14,20 +13,19 @@ import java.util.List;
 public class ChallengeController {
     private final ChallengeService challengeService;
 
-    @GetMapping("")
-    @ResponseBody
-    public List<Challenge> getChallenges(){
-        return this.challengeService.getChallenges();
+    @GetMapping("/detail/{challengeId}")
+    public String getChallengeDetail(Model model, @PathVariable Integer challengeId) {
+        Challenge challenge = this.challengeService.getChallenge(challengeId);
+        model.addAttribute("challenge", challenge);
+        // 조회수 기능 구현
+        return "challenge";
     }
 
     @PostMapping("/create")
     @ResponseBody
     public String postChallenge(@RequestBody Challenge challenge){
-        System.out.println("challenge");
         System.out.println(challenge);
-        this.challengeService.postChallenge(challenge.getChallengeTitle(), challenge.getChallengeCategory(),
-                challenge.getChallengeContent(), challenge.getChallengeHoliday(), challenge.getChallengeStart(), challenge.getChallengeEnd(),
-                challenge.getChallengeAuthority());
+        this.challengeService.postChallenge();
         return "생성됨";
     }
 }
